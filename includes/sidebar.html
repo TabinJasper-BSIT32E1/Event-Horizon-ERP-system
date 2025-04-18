@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- CSS STYLESHEET -->
     <link rel="stylesheet" href="../css/sidebar.css" />
+
+    <!-- LINK FOR ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -19,11 +23,11 @@
             </li>
             
             <!-- Menu Items -->
-            <li class="menu-item"><a href="#"><i class="fas fa-home"></i><span class="nav-text">Dashboard</span></a></li>
-            <li class="menu-item"><a href="#"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
-            <li class="menu-item"><a href="#"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
-            <li class="menu-item"><a href="#"><i class="fas fa-money-bill-wave"></i><span class="nav-text">Payroll</span></a></li>
-            <li class="menu-item"><a href="#"><i class="fas fa-chart-bar"></i><span class="nav-text">Reports</span></a></li>
+            <li class="menu-item"><a href="#" data-target="/html/dashboard.html"><i class="fas fa-home"></i><span class="nav-text">Dashboard</span></a></li>
+            <li class="menu-item"><a href="#" data-target="/html/attendance.html"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
+            <li class="menu-item"><a href="#" data-target="/html/employee.html"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
+            <li class="menu-item"><a href="#" data-target="/html/payroll.html"><i class="fas fa-money-bill-wave"></i><span class="nav-text">Payroll</span></a></li>
+            <li class="menu-item"><a href="#" data-target="/html/reports.html"><i class="fas fa-chart-bar"></i><span class="nav-text">Reports</span></a></li>
 
             <!-- Logout -->
             <li class="logout-container">
@@ -34,5 +38,13 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Content Container -->
+    <div id="content-container">
+        <!-- Module Container  -->
+    </div>
+
+    <!-- Include External JavaScript -->
+    <script src="../js/sidebar.js"></script>
 </body>
 </html>

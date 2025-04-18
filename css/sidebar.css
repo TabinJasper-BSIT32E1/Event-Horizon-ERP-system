@@ -13,6 +13,10 @@ body {
     background-color: #f4f4f4;
 }
 
+#content-container {
+    margin-left: 300px; 
+}
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -83,9 +87,20 @@ body {
     background-color: transparent;
 }
 
+/* Hover effect for menu items */
 .menu-list a:hover {
-    background-color: #f5811e;
     color: #fff;
+    background-color: rgba(245, 129, 30, 0.8); 
+    transform: translateY(-2px); 
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Active state for menu items */
+.menu-item.active a {
+    background-color: rgba(255, 255, 255, 0.8); 
+    color: #f5811e; 
+    transform: translateY(-2px); 
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* Icon size */
@@ -103,7 +118,7 @@ body {
 
 .divider hr {
     width: 100%;
-    margin: 8px 0 5px 0; 
+    margin: 8px 0 8px 0; 
     border: none;
     border-top: 2px solid #ddd;
 }

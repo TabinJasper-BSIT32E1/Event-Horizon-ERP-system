@@ -57,7 +57,7 @@ html, body {
 
 /* Main Content */
 .main-content {
-    flex: 1; /* if theres a content it will push down the footer */
+    flex: 1; 
 }
 
 /* Footer */
@@ -72,4 +72,79 @@ html, body {
     font-size: 12px;
     font-weight: bold;
     width: 100%;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.chart-container h2 {
+    font-family: Arial, sans-serif;
+    text-align: left;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.chart-box,
+.summary-report {
+    width: 1400px;
+    margin: 0 auto ;
+}
+
+/* Chart Box Styling */
+.chart-box {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 500px;
+}
+
+/* Summary Report Styling */
+.summary-report {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap; 
+    gap: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+.summary-box {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.summary-box .value {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.summary-box .label {
+    font-size: 12px;
+}
+
+/* Color Themes */
+.cyan { background-color: #00BCD4; }
+.red { background-color: #E53935; }
+.pink { background-color: #F48FB1; }
+.teal { background-color: #607D8B; }
+.dark { background-color: #455A64; }
+
+canvas#myChart {
+    width: 100% !important;
+    height: 100% !important;
 }

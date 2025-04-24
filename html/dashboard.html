@@ -6,6 +6,8 @@
     <title>Dashboard</title>
 
     <link rel="stylesheet" href="../css/dashboard.css" />
+
+    
 </head>
 
 <body>
@@ -25,12 +27,50 @@
 
         <!-- You can add main content here -->
         <div class="main-content">
-            <h1>Dashboard</h1>
+            <div class="chart-container">
+                <h2>PAYROLL EXPENSES</h2>
+                <div class="chart-box">
+                    <canvas id="myChart"></canvas>
+                </div>
+                
+                <h2>SUMMARY REPORT</h2>
+                <div class="summary-report">
+                    <div class="summary-box cyan">
+                        <div class="value">₱ <span id="employeesPaid">0.00</span></div>
+                        <div class="label">TOTAL EMPLOYEES PAID</div>
+                    </div>
+
+                    <div class="summary-box red">
+                        <div class="value">₱ <span id="deductions">0.00</span></div>
+                        <div class="label">TOTAL DEDUCTIONS</div>
+                    </div>
+
+                    <div class="summary-box dark">
+                        <div class="value"><span id="payPeriod">Apr 15 - 30</span></div>
+                        <div class="label">PAY PERIOD</div>
+                    </div>
+
+                    <div class="summary-box pink">
+                        <div class="value">₱ <span id="grosspay">0.00</span></div>
+                        <div class="label">TOTAL GROSSPAY</div>
+                    </div>
+
+                    <div class="summary-box teal">
+                        <div class="value">₱ <span id="contributions">0.00</span></div>
+                        <div class="label">TOTAL CONTRIBUTIONS</div>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+    
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/js/linegraph.js"></script>
 
         <!-- Footer -->
         <div class="footer">
-            © 2024 - 2025 <strong>EVENT HORIZON BSIT 4A1</strong> | All Rights Reserved
+            © 2024 - 2025  <strong> EVENT HORIZON BSIT 4A1</strong> | All Rights Reserved
         </div>
     </div>
 </body>

@@ -10,10 +10,14 @@
 }
 
 body {
+    
     background-color: #f4f4f4;
 }
 
 #content-container {
+    height: 100vh;
+    overflow: hidden;
+    max-height: 100vh;
     margin-left: 300px; 
 }
 

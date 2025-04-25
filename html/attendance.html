@@ -25,10 +25,50 @@
 
         <!-- You can add main content here -->
         <div class="main-content">
-            <h1>Attendance</h1>
-
+            <div class="top-part">
+                <h2>Attendance Summary</h2>
+                <div class="search-section">
+                    <div class="date-range-search">
+                        <label>Search by date:</label>
+                        <div class="date-inputs">
+                            <input type="text" placeholder="mm/dd/yy">
+                            <input type="text" placeholder="mm/dd/yy">
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-        </div>
+            <div class="attendance-container">
+                <!-- Fixed Header Row -->
+                <div class="attendance-header">
+                  <div class="employee-id-header">
+                    <div>Employee</div>
+                    <div>ID</div>
+                  </div>
+                  <div class="stats-header">
+                    <div>Leave Days</div>
+                    <div>Undertime</div>
+                  </div>
+                </div>
+                
+                <!-- Expandable Data Rows -->
+                <div class="attendance-data">
+                  <!-- Sample Data Row (will repeat for each employee) -->
+                  <div class="attendance-row">
+                    <div class="employee-info">
+                      <div>John Doe</div>
+                      <div>EMP-1001</div>
+                    </div>
+                    <div class="employee-stats">
+                      <div>2</div>
+                      <div>1.5</div>
+                    </div>
+                  </div>
+                  
+                  <!-- Additional rows will be added here dynamically -->
+                </div>
+              </div>
+
 
         <!-- Footer -->
         <div class="footer">

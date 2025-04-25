@@ -55,12 +55,6 @@ html, body {
     color: #777;
 }
 
-/* Main Content */
-.main-content {
-    flex: 1; /* if theres a content it will push down the footer */
-}
-
-/* Footer */
 .footer {
     background-color: #f5811e;
     color: #fff;
@@ -73,3 +67,127 @@ html, body {
     font-weight: bold;
     width: 100%;
 }
+
+.main-content {
+    flex: 1;
+    font-family: Arial, sans-serif;
+    width: 1000px;
+    padding: 20px;
+    margin: 0 auto; /* This centers the container horizontally */
+
+}
+
+.top-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.top-part h2 {
+    color: #333;
+    margin: 0;
+}
+
+.search-section {
+    display: flex;
+    gap: 20px;
+}
+
+.date-range-search {
+    display: flex;
+    flex-direction: column;
+}
+
+.date-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+input[type="text"] {
+    width: 120px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.attendance-container {
+    font-family: Arial, sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures rounded corners for child elements */
+  }
+  
+  /* Header Row Styling */
+  .attendance-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #eaeaea;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .employee-id-header, .stats-header {
+    display: flex;
+    gap: 30px;
+  }
+  
+  .employee-id-header {
+    width: 200px;
+    flex-direction: column;
+  }
+  
+  .stats-header {
+    width: 300px;
+    justify-content: space-around;
+  }
+  
+  /* Data Rows Styling */
+  .attendance-data {
+    max-height: 400px;
+    overflow-y: auto; /* Adds scroll when content exceeds max-height */
+  }
+  
+  .attendance-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+  }
+  
+  .attendance-row:last-child {
+    border-bottom: none;
+  }
+  
+  .employee-info {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .employee-stats {
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+  }
+  
+  /* Hover effect for rows */
+  .attendance-row:hover {
+    background-color: #f0f0f0;
+  }

@@ -144,7 +144,7 @@ html, body {
 .teal { background-color: #607D8B; }
 .dark { background-color: #455A64; }
 
-canvas#myChart {
+canvas#linegraph {
     width: 100% !important;
     height: 100% !important;
 }

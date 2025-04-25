@@ -3,36 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee</title>
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="../css/employee.css">
 
-    <link rel="stylesheet" href="../css/employee.css" />
 </head>
-
 <body>
     <div class="layout">
-        <!-- Top Bar -->
         <div class="top-bar">
             <div class="profile">
-                <i class="fas fa-cog"></i>
                 <i class="fas fa-bell"></i>
-                <img src="/assets/img/test image.jpg" alt="Profile Picture">
+                <img src="/assets/img/test image.jpg" alt="Profile">
                 <div>
-                    <span>Lorem Ipsum</span>
-                    <small>HR Admin</small>
+                    <span>Admin User</span>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="employee-container">        
+                <div class="header-row">
+                    <h1 class="employee-title">Employee Details</h1>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search..." />
+                    </div>
+                </div>
+        
+                <!-- Added Fake Data for visual representation -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Date of Birth</th>
+                            <th>Email Address</th>
+                            <th>Job Title/Position</th>
+                            <th>Department</th>
+                            <th>Employment Status</th>
+                            <th>Employee Type</th>
+                            <th>Date Hired</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EMP002</td>
+                            <td>John Smith</td>
+                            <td>1988-11-23</td>
+                            <td>john.smith@email.com</td>
+                            <td>HR Manager</td>
+                            <td>Human Resources</td>
+                            <td>Regular</td>
+                            <td>Full-Time</td>
+                            <td>2017-07-10</td>
+                        </tr>
+
+                        <tr>
+                            <td>EMP002</td>
+                            <td>John Smith</td>
+                            <td>1988-11-23</td>
+                            <td>john.smith@email.com</td>
+                            <td>HR Manager</td>
+                            <td>Human Resources</td>
+                            <td>Regular</td>
+                            <td>Full-Time</td>
+                            <td>2017-07-10</td>
+                        </tr>
+
+                        <tr>
+                            <td>EMP003</td>
+                            <td>Alice Johnson</td>
+                            <td>1995-02-17</td>
+                            <td>alice.j@email.com</td>
+                            <td>Graphic Designer</td>
+                            <td>Marketing</td>
+                            <td>Probationary</td>
+                            <td>Part-Time</td>
+                            <td>2021-01-20</td>
+                        </tr>
+
+                        <tr>
+                            <td>EMP004</td>
+                            <td>Michael Lee</td>
+                            <td>1992-08-09</td>
+                            <td>mlee@email.com</td>
+                            <td>Accountant</td>
+                            <td>Finance</td>
+                            <td>Regular</td>
+                            <td>Full-Time</td>
+                            <td>2019-09-15</td>
+                        </tr>
+                    </tbody>
+                </table>
+        
+                <div class="divider"></div>
+        
+                <!-- Split layout container for the 2-column layout -->
+                <div class="split-layout">
+                    <div class="left-column">
+                        <div class="info-section">
+                            <h3 class="section-title">Tax Information</h3>
+                            <ul>
+                                <li>SSS:</li>
+                                <li>Pag-ibig:</li>
+                                <li>Philhealth:</li>
+                                <li>Tin ID No:</li>
+                            </ul>
+                        </div>
+        
+                        <div class="info-section">
+                            <h3 class="section-title">Bank Account Information</h3>
+                            <ul>
+                                <li>Bank Name:</li>
+                                <li>Account Name:</li>
+                                <li>Account Number:</li>
+                                <li>Bank Routing Number/Branch Code:</li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="right-column">
+                        <div class="info-section">
+                            <h3 class="section-title">Compensation Details</h3>
+                            <ul>
+                                <li>Salary/Wage Rate:</li>
+                                <li>Standard Hours per Pay Period:</li>
+                                <li>Overtime Rules:</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- You can add main content here -->
-        <div class="main-content">
-            <h1>Employee</h1>
-        </div>
-
-        <!-- Footer -->
+        
         <div class="footer">
-            © 2024 - 2025 <strong>EVENT HORIZON BSIT 4A1</strong> | All Rights Reserved
+            © 2024 - 2025 EVENT HORIZON BSIT 42A1 | All Rights Reserved
         </div>
     </div>
 </body>
-
 </html>

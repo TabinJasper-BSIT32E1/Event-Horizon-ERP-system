@@ -55,10 +55,6 @@ html, body {
     color: #777;
 }
 
-/* Main Content */
-.main-content {
-    flex: 1; /* if theres a content it will push down the footer */
-}
 
 /* Footer */
 .footer {
@@ -72,4 +68,114 @@ html, body {
     font-size: 12px;
     font-weight: bold;
     width: 100%;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1; 
+    font-family: Arial, sans-serif;
+
+}
+
+.employee-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.employee-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.search-container input[type="text"] {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-box {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #535457;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.split-layout {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.left-column, .right-column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 8px 0;
+}
+
+.info-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.info-section li {
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+tr:nth-child(odd) {
+    background-color: #d9d9d9;
+}
+tr:nth-child(even) {
+    background-color: #f4f0f0;
 }

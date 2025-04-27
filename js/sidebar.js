@@ -1,44 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('.menu-item');
+    const contentContainer = document.getElementById('content-container');
 
     menuItems.forEach(item => {
-        item.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent default link behavior
+        const mainLink = item.querySelector('a.toggle-submenu');
+        const submenuLinks = item.querySelectorAll('.submenu li a');
 
-            // Remove 'active' class from all menu items
-            menuItems.forEach(menu => menu.classList.remove('active'));
+        if (mainLink) {
+            // If menu item has a submenu (like Reports)
+            mainLink.addEventListener('click', (event) => {
+                event.preventDefault();
 
-            // Add 'active' class to the clicked menu item
-            item.classList.add('active');
+                // Toggle only this submenu, close others
+                menuItems.forEach(menu => {
+                    if (menu !== item) {
+                        menu.classList.remove('open');
+                    }
+                });
 
-            // Load the target content dynamically
-            const target = item.querySelector('a').getAttribute('data-target');
-            const contentContainer = document.getElementById('content-container');
+                item.classList.toggle('open');
+            });
+        }
 
-            // Use iframe to load the content for the script
-            var iframe = document.createElement('iframe');
-            iframe.src = target;
-            iframe.style.width = '100%';    
-            iframe.style.height = '100%';
-            
+        submenuLinks.forEach(submenuLink => {
+            submenuLink.addEventListener('click', (event) => {
+                event.preventDefault();
 
-            contentContainer.innerHTML = ''; 
-            contentContainer.appendChild(iframe);
-            
-            // fetch(target)
-            //     .then(response => {
-            //         if (!response.ok) {
-            //             throw new Error('Failed to load content');
-            //         }
-            //         return response.text();
-            //     })
-            //     .then(html => {
-            //         contentContainer.innerHTML = html;
-            //     })
-            //     .catch(error => {
-            //         console.error('Error loading content:', error);
-            //         contentContainer.innerHTML = '<p>Error loading content.</p>';
-            //     });
+                // Remove active class from ALL links first
+                document.querySelectorAll('.menu-item, .submenu li a').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                // Highlight the submenu link only
+                submenuLink.classList.add('active');
+
+                // Load the correct iframe content
+                const target = submenuLink.getAttribute('data-target');
+                if (target) {
+                    const iframe = document.createElement('iframe');
+                    iframe.src = target;
+                    iframe.style.width = '100%';
+                    iframe.style.height = '100%';
+                    contentContainer.innerHTML = '';
+                    contentContainer.appendChild(iframe);
+                }
+            });
         });
+
+        // Handle main menu items without submenu
+        if (!item.classList.contains('has-submenu')) {
+            const link = item.querySelector('a[data-target]');
+            if (link) {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+
+                    // Remove active class from all
+                    document.querySelectorAll('.menu-item, .submenu li a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    item.classList.add('active');
+
+                    const target = link.getAttribute('data-target');
+                    if (target) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = target;
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100%';
+                        contentContainer.innerHTML = '';
+                        contentContainer.appendChild(iframe);
+                    }
+                });
+            }
+        }
     });
 });

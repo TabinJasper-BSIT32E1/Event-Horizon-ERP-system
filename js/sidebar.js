@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuItems = document.querySelectorAll('.menu-item');
     const contentContainer = document.getElementById('content-container');
+    const sidebar = document.querySelector('.sidebar-nav');
+    const toggleButton = document.querySelector('.sidebar-toggle');
+
+    // Sidebar toggle functionality
+    if (toggleButton) {
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            contentContainer.classList.toggle('sidebar-open');
+        });
+    }
 
     menuItems.forEach(item => {
         const mainLink = item.querySelector('a.toggle-submenu');

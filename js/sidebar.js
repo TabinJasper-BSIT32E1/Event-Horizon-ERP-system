@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
             defaultMenuItem.classList.add('active');
             defaultMenuItem.closest('.menu-item')?.classList.add('active'); // Also add to its parent .menu-item
         }
-        
     };
 
     loadDefaultPage(); // Call the function to load the default page
@@ -70,10 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelectorAll('.menu-item, .submenu li a').forEach(link => {
                     link.classList.remove('active');
                 });
-                
-                link.classList.add('active'); // active on <a>
-                link.closest('.menu-item')?.classList.add('active'); // active on .menu-item
-                
+
+                // Highlight the submenu link only
+                submenuLink.classList.add('active');
 
                 // Load the correct iframe content
                 const target = submenuLink.getAttribute('data-target');

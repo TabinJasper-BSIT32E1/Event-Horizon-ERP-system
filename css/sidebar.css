@@ -188,43 +188,43 @@ body {
 @media (max-width: 768px) {
     .sidebar-nav {
         position: fixed;
-        left: -300px; /* Hide sidebar by default */
+        left: -300px; 
         transition: left 0.3s ease;
-        width: 250px; /* Adjust width for smaller screens */
+        width: 250px; 
     }
 
     .sidebar-nav.open {
-        left: 0; /* Show sidebar when open */
+        left: 0; 
     }
 
     #content-container {
-        margin-left: 0; /* Remove margin when sidebar is hidden */
+        margin-left: 0; 
         transition: margin-left 0.3s ease;
     }
 
     #content-container.sidebar-open {
-        margin-left: 250px; /* Adjust margin when sidebar is open */
+        margin-left: 250px; 
     }
 
     .menu-list a {
-        font-size: 14px; /* Adjust font size for smaller screens */
+        font-size: 14px; 
     }
 }
 
 @media (max-width: 768px) {
     .logo-text {
-        text-align: center; /* Ensure text is centered */
-        padding: 5px 0; /* Reduce padding for smaller screens */
+        text-align: center; 
+        padding: 5px 0; 
     }
 
     .logo-text .main-text {
-        font-size: 25px; /* Reduce font size for mobile */
-        letter-spacing: 0.5px; /* Adjust letter spacing */
+        font-size: 25px; 
+        letter-spacing: 0.5px; 
     }
 
     .logo-text .tagline {
-        font-size: 8px; /* Reduce font size for tagline */
-        letter-spacing: 1px; /* Adjust letter spacing */
+        font-size: 8px; 
+        letter-spacing: 1px; 
     }
 }
 
@@ -234,18 +234,18 @@ body {
     top: 15px;
     left: 15px;
     z-index: 1000;
-    background-color: rgba(245, 129, 30, 0.5); /* Semi-transparent background */
+    background-color: rgba(245, 129, 30, 0.5); 
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    display: none; /* Hide toggle button by default */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    display: none; 
+    transition: background-color 0.3s ease; 
 }
 
 @media (max-width: 768px) {
     .sidebar-toggle {
-        display: block; /* Show toggle button on smaller screens */
+        display: block;
     }
 }

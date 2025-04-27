@@ -1,75 +1,247 @@
 html, body {
-    height: 100%;
     margin: 0;
-    padding: 0;
-}
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    display: flex; 
+    flex-direction: column; 
+    overflow-y: hidden;
+    
+  }
+  
+  #content-container {
+    flex: 1;
+  }
 
-.layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-}
-
-/* Header */
-.top-bar {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.top-bar .profile {
+  /* First Section Style */
+  .employee-card {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    color: #333;
-}
-
-.top-bar .profile i {
-    font-size: 18px;
-    color: #CCCCFF;
-    cursor: pointer;
-}
-
-.top-bar .profile img {
-    width: 30px;
-    height: 30px;
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .employee-avatar {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-}
-
-.top-bar .profile div {
+    margin-right: 20px;
+  }
+  
+  .employee-info {
     display: flex;
     flex-direction: column;
-}
-
-.top-bar .profile span {
-    font-weight: bold;
-}
-
-.top-bar .profile small {
-    font-size: 12px;
-    color: #777;
-}
-
-/* Main Content */
-.main-content {
-    flex: 1; /* if theres a content it will push down the footer */
-}
-
-/* Footer */
-.footer {
-    background-color: #f5811e;
-    color: #fff;
-    text-align: center;
+  }
+  
+  .employee-name-id {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 10px 0;
-    font-size: 12px;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .employee-id {
+    color: orange;
     font-weight: bold;
+    margin-right: 8px;
+  }
+  
+  .employee-name {
+    color: limegreen;
+    font-weight: bold;
+  }
+  
+  .employee-position {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+  
+  .employee-tags {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .tag {
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .tag.blue {
+    background-color: #00aaff;
+  }
+  
+  .tag.yellow {
+    background-color: #ffcc00;
+    color: #333;
+  }
+
+  /* Second Section Style */
+  .summary-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .card {
+    flex: 1;
+    min-width: 120px;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .highlight {
+    background-color: #f0f4ff;
+  }
+  
+  /* Third Section Style */
+  .payslip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .btn-download {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-download:hover {
+    background-color: #0056b3;
+  }
+  
+    /* Fourth Section Style */
+  .payslip-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .employee-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .employee-header h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .employee-header h2 {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: normal;
+  }
+
+  .employee-header h3 {
+    font-size: 16px;
+    color: #888;
+    font-weight: normal;
+  }
+
+  /* Right Part Styling EI/BD/CD */
+  .three-column-layout {
+    display: flex;
+    gap: 20px;
+  }
+
+  .column {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .column h3 {
+    font-size: 16px;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+  }
+
+  .bank-details-title {
+    margin-top: 30px;
+  }
+
+  /* Info Column Style */
+  .info-table {
     width: 100%;
-}
+    border-collapse: collapse;
+  }
+
+  .info-table th, .info-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+
+  .info-table th {
+    color: #666;
+    font-weight: normal;
+    width: 40%;
+  }
+
+  /* Earnings Column Style */
+  .earnings-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .earnings-table th, .earnings-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+
+  .earnings-table th {
+    font-weight: bold;
+    color: #444;
+  }
+
+  .earnings-table td {
+    color: #333;
+  }
+
+  .total-row {
+    background-color: #f8f9fa;
+    font-weight: bold;
+  }
+
+
+  /* Fifth Section Styling */
+  .generate-button-container {
+    text-align: center;
+  }
+
+  .btn-generate {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .btn-generate:hover {
+    background-color: #0069d9;
+  }

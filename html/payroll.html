@@ -1,38 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payroll</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll</title>
 
-    <link rel="stylesheet" href="../css/payroll.css" />
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="../css/payroll.css" />
 </head>
 
 <body>
-    <div class="layout">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="profile">
-                <i class="fas fa-cog"></i>
-                <i class="fas fa-bell"></i>
-                <img src="/assets/img/test image.jpg" alt="Profile Picture">
-                <div>
-                    <span>Lorem Ipsum</span>
-                    <small>HR Admin</small>
-                </div>
-            </div>
-        </div>
+    <script src="/js/header.js" defer></script>
+    <script src="/js/footer.js" defer></script>
 
-        <!-- You can add main content here -->
-        <div class="main-content">
-            <h1>payroll</h1>
-        </div>
+    <div id="header-placeholder"></div>
 
-        <!-- Footer -->
-        <div class="footer">
-            © 2024 - 2025 <strong>EVENT HORIZON BSIT 4A1</strong> | All Rights Reserved
-        </div>
+    <div id="content-container">
+         <!-- First Section -->
+ <div class="employee-card">
+    <img src="/assets/img/test image.jpg" alt="Employee Avatar" class="employee-avatar">
+  
+    <div class="employee-info">
+      <div class="employee-name-id">
+        <span class="employee-id">1001</span>
+        <span class="employee-name">Posa</span>
+      </div>
+      <div class="employee-position">HR Officer</div>
+  
+      <div class="employee-tags">
+        <span class="tag blue">POSA</span>
+        <span class="tag yellow">Hired: Jun 15, 2023</span>
+      </div>
     </div>
-</body>
+  </div>
 
+  <!-- Second Section -->
+  <div class="summary-cards">
+    <div class="card highlight">PHP 35,000.00<br><small>Basic Salary</small></div>
+    <div class="card highlight">PHP 2,187.50<br><small>Overtime Pay</small></div>
+    <div class="card highlight">PHP 36,187.50<br><small>Total Earnings</small></div>
+    <div class="card highlight">PHP 1,200.00<br><small>Total Deductions</small></div>
+    <div class="card highlight">Mar. 1 – Mar. 15<br><small>Pay Period</small></div>
+  </div>
+
+  <!-- Third Section -->
+  <div class="payslip-header">
+    <h2>Payslip for: March 2025</h2>
+    <button class="btn-download">Download PDF</button>
+  </div>
+
+  <!-- Fourth Section -->
+  <div class="payslip-container">
+     <div class="three-column-layout">
+        <!-- Employee Information Column -->
+      <div class="column">
+        <h3>Employee Information</h3>
+        <table class="info-table">
+          <tr>
+            <th>Employee ID</th>
+            <td>EMP00123</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>Juan Dela Cruz</td>
+          </tr>
+          <tr>
+            <th>Job Title</th>
+            <td>Software Engineer</td>
+          </tr>
+          <tr>
+            <th>Department Type</th>
+            <td>IT-Filme</td>
+          </tr>
+          <tr>
+            <th>Date Hired</th>
+            <td>Jun 15, 2023</td>
+          </tr>
+        </table>
+  
+        <!-- Bank Details Colum -->
+        <h3 class="bank-details-title">Bank Details</h3>
+        <table class="info-table">
+          <tr>
+            <th>Bank Name</th>
+            <td>BDO</td>
+          </tr>
+          <tr>
+            <th>Account Name</th>
+            <td>Juan Dela Cruz</td>
+          </tr>
+          <tr>
+            <th>Account Number</th>
+            <td>XXXX-XXXX-XXX</td>
+          </tr>
+          <tr>
+            <th>Routing Code</th>
+            <td>010530567</td>
+          </tr>
+        </table>
+      </div>
+  
+      <!-- Compensation Details Column -->
+      <div class="column">
+        <h3>Compensation Details</h3>
+        <table class="info-table">
+          <tr>
+            <th>Basic Salary</th>
+            <td>PHP 35,000.00</td>
+          </tr>
+          <tr>
+            <th>Pay Period</th>
+            <td>Mar. 1 – Mar. 15</td>
+          </tr>
+          <tr>
+            <th>Standard Hours</th>
+            <td>80</td>
+          </tr>
+          <tr>
+            <th>Overtime Hours</th>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th>Overtime Rate</th>
+            <td>125%</td>
+          </tr>
+        </table>
+      </div>
+  
+      <!-- Earnings & Deductions Column -->
+      <div class="column">
+        <h3>Earnings & Deductions</h3>
+        <table class="earnings-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Earnings (P)</th>
+              <th>Deductions (P)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic Pay</td>
+              <td>35,000.00</td>
+              <td>581.30</td>
+            </tr>
+            <tr>
+              <td>Overtime Pay</td>
+              <td>2,187.50</td>
+              <td>100.00</td>
+            </tr>
+            <tr>
+              <td>Allowances</td>
+              <td>2,000.00</td>
+              <td>437.50</td>
+            </tr>
+            <tr>
+              <td>SSS</td>
+              <td>581.30</td>
+              <td>581.30</td>
+            </tr>
+            <tr>
+              <td>Pag-IBIG</td>
+              <td>100.00</td>
+              <td>120.00</td>
+            </tr>
+            <tr>
+              <td>PhilHealth</td>
+              <td>437.50</td>
+              <td>1,200.00</td>
+            </tr>
+            <tr>
+              <td>Withholding Tax</td>
+              <td>P36.187.50</td>
+              <td>P36.868.70</td>
+            </tr>
+            <tr class="total-row">
+              <td><strong>Total</strong></td>
+              <td><strong>P36.187.50</strong></td>
+              <td><strong>P36.868.70</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  
+    <!-- Fifth Section -->
+  <div class="generate-button-container">
+    <button class="btn-generate">Generate Payslip</button>
+  </div>
+</div>
+    </div>
+           
+
+    <div id="footer-placeholder"></div>
+
+
+</body>
 </html>
+

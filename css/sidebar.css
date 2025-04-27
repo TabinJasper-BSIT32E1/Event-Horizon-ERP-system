@@ -89,6 +89,8 @@ body {
     border-radius: 12px;
     transition: background 0.3s ease, color 0.3s ease;
     background-color: transparent;
+    user-select: none; 
+
 }
 
 /* Hover effect for menu items */
@@ -141,6 +143,7 @@ body {
     list-style: none;
     padding-left: 20px;
     margin-top: 5px;
+    
 }
 
 .has-submenu.open .submenu {
@@ -150,9 +153,10 @@ body {
 .submenu li a {
     padding: 8px 10px;
     font-size: 14px;
-    color: #555;
+    color: #fff;
     text-decoration: none;
     gap: 10px;
+    
     
 }
 

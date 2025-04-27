@@ -8,6 +8,7 @@ html, body {
 #content-container {
     flex: 1;
 }
+
 .main-content {
     display: flex;
     justify-content: center;

@@ -1,0 +1,43 @@
+.top-bar {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.top-bar .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.top-bar .profile i {
+    font-size: 18px;
+    color: #CCCCFF;
+    cursor: pointer;
+}
+
+.top-bar .profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.top-bar .profile div {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar .profile span {
+    font-weight: bold;
+}
+
+.top-bar .profile small {
+    font-size: 12px;
+    color: #777;
+}

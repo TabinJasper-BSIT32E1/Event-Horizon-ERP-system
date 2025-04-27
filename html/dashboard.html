@@ -6,26 +6,16 @@
     <title>Dashboard</title>
 
     <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
 
     
 </head>
 
 <body>
-    <div class="layout">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="profile">
-                <i class="fas fa-cog"></i>
-                <i class="fas fa-bell"></i>
-                <img src="/assets/img/test image.jpg" alt="Profile Picture">
-                <div>
-                    <span>Lorem Ipsum</span>
-                    <small>HR Admin</small>
-                </div>
-            </div>
-        </div>
+    <div id="header-placeholder"></div>
 
-        <!-- You can add main content here -->
+    <div id="content-container">
         <div class="main-content">
             <div class="chart-container">
                 <h2>PAYROLL EXPENSES</h2>
@@ -62,17 +52,19 @@
                 </div>
             </div>
         </div>
-        
-    
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/js/graphs.js"></script>
-
-        <!-- Footer -->
-        <div class="footer">
-            © 2024 - 2025  <strong> EVENT HORIZON BSIT 4A1</strong> | All Rights Reserved
-        </div>
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/graphs.js"></script>
+
+    <script src="/js/header.js"></script>
+    <script src="/js/footer.js"></script>
+
+    <div id="footer-placeholder"></div>
+
+
+   
 </body>
 
 </html>

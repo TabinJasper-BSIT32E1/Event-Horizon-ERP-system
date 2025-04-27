@@ -9,10 +9,12 @@
 
     <!-- LINK FOR ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    
 </head>
 <body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Sidebar -->
     <nav class="sidebar-nav">
         <ul class="menu-list">    
             <!-- Logo -->
@@ -29,8 +31,18 @@
             <li class="menu-item"><a href="#" data-target="/html/attendance.html"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
             <li class="menu-item"><a href="#" data-target="/html/employee.html"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
             <li class="menu-item"><a href="#" data-target="/html/payroll.html"><i class="fas fa-money-bill-wave"></i><span class="nav-text">Payroll</span></a></li>
-            <li class="menu-item"><a href="#" data-target="/html/reports.html"><i class="fas fa-chart-bar"></i><span class="nav-text">Reports</span></a></li>
-
+            <li class="menu-item has-submenu">
+                <a href="#" class="toggle-submenu">
+                    <i class="fas fa-chart-bar"></i> 
+                    <span class="nav-text">Reports</span>
+                    <i class="fas fa-chevron-down arrow-icon"></i> <!-- This is the arrow -->
+                </a>
+                <ul class="submenu">
+                    <li><a href="#" data-target="/html/reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="#" data-target="/html/summaryreport.html"><i class="fas fa-chart-pie"></i> Summary Report</a></li>
+                </ul>
+            </li>
+            
             <!-- Logout -->
             <li class="logout-container">
                 <div class="divider"><hr /></div>

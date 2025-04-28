@@ -1,3 +1,7 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 
+    <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="../css/dashboard.css" />
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-
-    
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 
 <body>
+    <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
+    <!-- Content -->
     <div id="content-container">
         <div class="main-content">
             <div class="chart-container">
@@ -54,17 +59,13 @@
         </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/graphs.js"></script>
-
-    <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
-
+    <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-
-   
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/graphs.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
 </body>
-
 </html>

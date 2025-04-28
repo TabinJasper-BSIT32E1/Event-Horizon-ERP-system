@@ -29,8 +29,8 @@ body {
     left: 0;
     width: 300px;
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-                url('/assets/img/Nav-BG.png') no-repeat center center;
-    background-size: cover;
+            url('../assets/img/Nav-BG.png') no-repeat center center;
+background-size: cover;
     box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
 }
 

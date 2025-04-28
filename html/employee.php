@@ -1,3 +1,7 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Details</title>
 
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/employee.css">
 
 </head>
 <body>
 
-    <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
 
     <div id="header-placeholder"></div>
     

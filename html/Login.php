@@ -1,3 +1,8 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

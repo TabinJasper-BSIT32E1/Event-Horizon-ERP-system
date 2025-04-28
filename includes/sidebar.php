@@ -1,3 +1,7 @@
+<?php
+// No PHP logic needed here yet, just include HTML structure
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,21 +31,22 @@
             </li>
             
             <!-- Menu Items -->
-            <li class="menu-item"><a href="#" data-target="/html/dashboard.html"><i class="fas fa-home"></i><span class="nav-text">Dashboard</span></a></li>
-            <li class="menu-item"><a href="#" data-target="/html/attendance.html"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
-            <li class="menu-item"><a href="#" data-target="/html/employee.html"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
-            <li class="menu-item"><a href="#" data-target="/html/payroll.html"><i class="fas fa-money-bill-wave"></i><span class="nav-text">Payroll</span></a></li>
+            <li class="menu-item"><a href="#" data-target="../html/dashboard.php"><i class="fas fa-home"></i><span class="nav-text">Dashboard</span></a></li>
+            <li class="menu-item"><a href="#" data-target="../html/attendance.php"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
+            <li class="menu-item"><a href="#" data-target="../html/employee.php"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
+            <li class="menu-item"><a href="#" data-target="../html/payroll.php"><i class="fas fa-money-bill-wave"></i><span class="nav-text">Payroll</span></a></li>
             <li class="menu-item has-submenu">
                 <a href="#" class="toggle-submenu">
                     <i class="fas fa-chart-bar"></i> 
                     <span class="nav-text">Reports</span>
-                    <i class="fas fa-chevron-down arrow-icon"></i> <!-- This is the arrow -->
+                    <i class="fas fa-chevron-down arrow-icon"></i>
                 </a>
                 <ul class="submenu">
-                    <li><a href="#" data-target="/html/reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
-                    <li><a href="#" data-target="/html/summaryreport.html"><i class="fas fa-chart-pie"></i> Summary Report</a></li>
+                    <li><a href="#" data-target="../html/reports.php"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="#" data-target="../html/summaryreport.php"><i class="fas fa-chart-pie"></i> Summary Report</a></li>
                 </ul>
             </li>
+
             
             <!-- Logout -->
             <li class="logout-container">

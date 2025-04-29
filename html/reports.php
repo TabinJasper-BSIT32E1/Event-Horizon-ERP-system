@@ -1,3 +1,7 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports</title>
 
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/reports.css" /> 
 </head>
 
@@ -59,11 +63,11 @@
 
     <!-- Chart.js Script -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/graphs.js"></script>
+    <script src="../js/graphs.js"></script>
 
     <!-- Script for header & footer -->
-    <script src="/js/header.js"></script>
-    <script src="/js/footer.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
 
     <div id="footer-placeholder"></div>
 </body>

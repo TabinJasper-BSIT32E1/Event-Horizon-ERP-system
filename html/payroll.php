@@ -1,3 +1,7 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +9,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payroll</title>
 
-  <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/payroll.css" />
 </head>
 
 <body>
-    <script src="/js/header.js" defer></script>
-    <script src="/js/footer.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/footer.js" defer></script>
 
     <div id="header-placeholder"></div>
 
     <div id="content-container">
          <!-- First Section -->
  <div class="employee-card">
-    <img src="/assets/img/test image.jpg" alt="Employee Avatar" class="employee-avatar">
+    <img src="../assets/img/test image.jpg" alt="Employee Avatar" class="employee-avatar">
   
     <div class="employee-info">
       <div class="employee-name-id">

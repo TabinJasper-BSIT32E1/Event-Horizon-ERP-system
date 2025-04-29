@@ -1,3 +1,7 @@
+<?php
+// No PHP logic yet, but structure is now PHP ready
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monthly Summary Report</title>
 
-    <link rel="stylesheet" href="/css/header.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/summaryreport.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/summaryreport.css">
 </head>
 
 <body>
@@ -114,8 +118,8 @@
     </div>
 
 
-    <script src="/js/header.js" defer></script>
-    <script src="/js/footer.js" defer></script>
+    <script src="../js/header.js" defer></script>
+    <script src="../js/footer.js" defer></script>
 
     <div id="footer-placeholder"></div>
 

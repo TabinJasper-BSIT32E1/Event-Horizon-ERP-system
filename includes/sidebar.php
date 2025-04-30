@@ -1,5 +1,5 @@
 <?php
-// No PHP logic needed here yet, just include HTML structure
+// No PHP logic yet, but structure is now PHP ready
 ?>
 
 <!DOCTYPE html>
@@ -7,19 +7,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <!-- CSS STYLESHEET -->
-    <link rel="stylesheet" href="../css/sidebar.css" />
-
-    <!-- LINK FOR ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/sidebar.css?ver=<?php echo time(); ?>" />
 </head>
 <body>
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
-
-    <!-- Sidebar -->
     <nav class="sidebar-nav">
+        <button id="toggle-sidebar-btn" class="sidebar-toggle-btn">
+            <i class="fas fa-chevron-left"></i>
+        </button>
         <ul class="menu-list">    
             <!-- Logo -->
             <li class="logo-container">
@@ -47,7 +43,6 @@
                 </ul>
             </li>
 
-            
             <!-- Logout -->
             <li class="logout-container">
                 <div class="divider"><hr /></div>
@@ -63,6 +58,6 @@
     </div>
 
     <!-- Include External JavaScript -->
-    <script src="../js/sidebar.js"></script>
+    <script src="../js/sidebar.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>

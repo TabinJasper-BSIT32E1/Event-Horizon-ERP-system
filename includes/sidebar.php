@@ -39,7 +39,7 @@
                 </a>
                 <ul class="submenu">
                     <li><a href="#" data-target="../html/reports.php"><i class="fas fa-file-alt"></i> Reports</a></li>
-                    <li><a href="#" data-target="../html/summaryreport.php"><i class="fas fa-chart-pie"></i> Summary Report</a></li>
+                    <li><a href="#" data-target="../html/summaryreport.php"><i class="fas fa-chart-pie"></i> Monthly Report</a></li>
                 </ul>
             </li>
 

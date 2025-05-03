@@ -10,61 +10,63 @@
     <title>Dashboard</title>
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="../css/dashboard.css" />
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/dashboard.css?ver=<?php echo time(); ?>" />    
+    <link rel="stylesheet" href="../css/header.css?ver=<?php echo time(); ?>" />
+    <link rel="stylesheet" href="../css/footer.css?ver=<?php echo time(); ?>" />
+    
 </head>
 
 <body>
     <!-- Header Placeholder -->
     <div id="header-placeholder"></div>
 
-    <!-- Content -->
     <div id="content-container">
-        <div class="main-content">
-            <div class="chart-container">
-                <h2>PAYROLL EXPENSES</h2>
-                <div class="chart-box">
-                    <canvas id="linegraph"></canvas>
-                </div>
-                
-                <h2>SUMMARY REPORT</h2>
-                <div class="summary-report">
-                    <div class="summary-box cyan">
-                        <div class="value">₱ <span id="employeesPaid">0.00</span></div>
-                        <div class="label">TOTAL EMPLOYEES PAID</div>
-                    </div>
+    <h2>PAYROLL REPORTS</h2>
+    <div class="dashboard">
 
-                    <div class="summary-box red">
-                        <div class="value">₱ <span id="deductions">0.00</span></div>
-                        <div class="label">TOTAL DEDUCTIONS</div>
-                    </div>
+      <!-- Line Chart Card -->
+      <div class="card chart-card">
+        
+        <canvas id="linegraph"></canvas>
+      </div>
 
-                    <div class="summary-box dark">
-                        <div class="value"><span id="payPeriod">Apr 15 - 30</span></div>
-                        <div class="label">PAY PERIOD</div>
-                    </div>
-
-                    <div class="summary-box pink">
-                        <div class="value">₱ <span id="grosspay">0.00</span></div>
-                        <div class="label">TOTAL GROSSPAY</div>
-                    </div>
-
-                    <div class="summary-box teal">
-                        <div class="value">₱ <span id="contributions">0.00</span></div>
-                        <div class="label">TOTAL CONTRIBUTIONS</div>
-                    </div>
-                </div>
-            </div>
+      <!-- Pie Chart Card -->
+      <div class="card pie-card">
+        <h3>MM/DD/YY - MM/DD/YY</h3>
+        <canvas id="piechart"></canvas>
+        <div class="legend">
+          <div><span class="legend-box present"></span> Present</div>
+          <div><span class="legend-box absent"></span> Absent</div>
         </div>
+      </div>
+
+      <!-- Total Employees Card -->
+      <div class="card employee-card">
+        <h3>Total No. of Employees</h3>
+        <div class="employee-icon">👤</div>
+        <div class="employee-count">1,000</div>
+      </div>
+
+      <!-- Summary Report Card -->
+      <div class="card summary-card">
+    <h3>MM/YYYY</h3>
+    <div class="summary-grid">
+        <div class="summary-circle blue">Average Net Pay</div>
+        <div class="summary-circle blue">Total Tax Deductions</div>
+        <div class="summary-circle blue">Total Contribution Amounts</div>
+        <div class="summary-circle blue">No. of Generated Payslip</div>
     </div>
+</div>
+
+    </div>
+  </div>
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
     <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../js/graphs.js"></script>
+    <script src="../js/graphs.js?ver=<?php echo time(); ?>"></script>
     <script src="../js/header.js"></script>
     <script src="../js/footer.js"></script>
 </body>

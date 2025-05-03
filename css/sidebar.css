@@ -13,6 +13,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Hide & show of Sidebar */
 .sidebar-toggle-btn {
     position: absolute;
     top: 20px;
@@ -45,6 +46,9 @@ body {
     transform: rotate(180deg);
 }
 
+/*  */
+
+/* Sidebar */
 .sidebar-nav {
     position: fixed;
     top: 0;
@@ -63,6 +67,8 @@ body {
 .sidebar-nav.hidden {
     transform: translateX(-100%);
 }
+
+/*  */
 
 /* CONTENT CONTAINER */
 #content-container {

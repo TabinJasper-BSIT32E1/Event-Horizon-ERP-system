@@ -1,156 +1,100 @@
 html, body {
     margin: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+
 }
 
 #content-container {
     flex: 1; 
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    box-sizing: border-box;
 }
 
-.main-content {
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding-bottom: 20px;
+    width: 100%;        
+    height: auto;       
+    max-width: 1200px;  
+    margin: 0 auto;     
+  }
+  
+  .dashboard h2 {
+    grid-column: span 12; /* Make it span the full width of the grid */
+    margin-bottom: 10px;   /* Add space below the heading */
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .chart-card { grid-column: span 8; grid-row: span 2; }
+  .pie-card   { grid-column: span 4; grid-row: span 2; }
+  .employee-card { grid-column: span 4; }
+  .summary-card  { grid-column: span 8; }
+  
+  .pie-card h3,
+  .employee-card h3,
+  .summary-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .employee-icon {
+    font-size: 100px;
+    margin: 10px 0;
+  }
+  
+  .employee-count {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .legend {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.chart-container h2 {
-    font-family: Arial, sans-serif;
-    text-align: left;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.chart-box,
-.summary-report {
-    width: 100%;
-    max-width: 1200px; 
-    margin: 0 auto;
-    box-sizing: border-box; 
-}
-
-/* Chart Box Styling */
-.chart-box {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    height: 500px;
-}
-
-/* Summary Report Styling */
-.summary-report {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap; 
     gap: 10px;
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    background-color: #f8f8f8;
-}
-
-.summary-box {
-    flex: 1;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .legend-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  
+  .present { background: #4caf50; }
+  .absent  { background: #f44336; }
+  
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .summary-circle {
+    background: #007bff;
     color: #fff;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.summary-box .value {
-    font-size: 18px;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 14px;
     font-weight: bold;
-    margin-bottom: 5px;
-}
+  }
 
-.summary-box .label {
-    font-size: 12px;
-}
-
-/* Color Themes */
-.cyan { background-color: #00BCD4; }
-.red { background-color: #E53935; }
-.pink { background-color: #F48FB1; }
-.teal { background-color: #607D8B; }
-.dark { background-color: #455A64; }
-
-canvas#linegraph {
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* For tablets and smaller screens (max-width: 768px) */
-@media (max-width: 768px) {
-    .chart-container h2 {
-        font-size: 18px;
-        text-align: center;
-    }
-
-    .chart-box,
-    .summary-report {
-        width: 100%;
-    }
-
-    .summary-report {
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 15px;
-    }
-
-    .summary-box {
-        flex: 1 1 calc(50% - 10px); /* Two boxes per row */
-        padding: 15px;
-    }
-
-    .summary-box .value {
-        font-size: 16px;
-    }
-
-    .summary-box .label {
-        font-size: 10px;
-    }
-
-    .chart-box {
-        height: 400px;
-    }
-}
-
-/* For mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
-    .chart-container h2 {
-        font-size: 16px;
-    }
-
-    .summary-box {
-        flex: 1 1 100%; /* One box per row */
-        padding: 10px;
-    }
-
-    .summary-box .value {
-        font-size: 14px;
-    }
-
-    .summary-box .label {
-        font-size: 9px;
-    }
-
-    .chart-box {
-        height: 300px;
-    }
-}
-
-
+  .summary-card h3 {
+    text-align: left;
+  }

@@ -115,3 +115,26 @@ tr:nth-child(odd) {
 tr:nth-child(even) {
     background-color: #f4f0f0;
 }
+
+
+/* dinagdag ko - gab */
+.pagination-controls {
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.pagination-controls button {
+    padding: 6px 12px;
+    margin: 0 4px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+

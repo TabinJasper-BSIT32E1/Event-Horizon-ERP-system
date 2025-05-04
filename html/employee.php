@@ -1,5 +1,36 @@
 <?php
-// No PHP logic yet, but structure is now PHP ready
+
+    //limited data for table is 5. ibahin const limit variable sa employee.js kung gusto ibahin limit ng table.
+
+    //added previous and next button sa javascript (employee.js). 
+    
+    //nagana searchbar sa employee ID nga lang.
+
+    //[bug]dko ma limit yung next button pag wala ng data mapapakita. so bali makakapagnext ng infinite yung user pag spinam next btn
+
+    //feature kulang, select sa table then mag didisplay info sa baba (Tax Information, Bank Account Information, Compensation Details) [wala pang db kaya pa magawan]
+
+
+    include '../database/database.php'; // Includes the correct database connection
+
+    $search = isset($_GET['query']) ? mysqli_real_escape_string($conn, $_GET['query']) : '';
+
+    if (isset($_GET['api']) && $_GET['api'] == '1') {
+        $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 5;
+        $offset = isset($_GET['offset']) ? intval($_GET['offset']) : 0;
+
+        $sql = "SELECT * FROM tblemployees WHERE EmployeeID LIKE '%$search%' LIMIT $limit OFFSET $offset";
+        $result = mysqli_query($conn, $sql);
+
+        $data = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +68,6 @@
                         <tr>
                             <th>Employee ID</th>
                             <th>Employee Name</th>
-                            <th>Date of Birth</th>
                             <th>Email Address</th>
                             <th>Job Title/Position</th>
                             <th>Department</th>
@@ -46,57 +76,15 @@
                             <th>Date Hired</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>EMP002</td>
-                            <td>John Smith</td>
-                            <td>1988-11-23</td>
-                            <td>john.smith@email.com</td>
-                            <td>HR Manager</td>
-                            <td>Human Resources</td>
-                            <td>Regular</td>
-                            <td>Full-Time</td>
-                            <td>2017-07-10</td>
-                        </tr>
 
-                        <tr>
-                            <td>EMP002</td>
-                            <td>John Smith</td>
-                            <td>1988-11-23</td>
-                            <td>john.smith@email.com</td>
-                            <td>HR Manager</td>
-                            <td>Human Resources</td>
-                            <td>Regular</td>
-                            <td>Full-Time</td>
-                            <td>2017-07-10</td>
-                        </tr>
-
-                        <tr>
-                            <td>EMP003</td>
-                            <td>Alice Johnson</td>
-                            <td>1995-02-17</td>
-                            <td>alice.j@email.com</td>
-                            <td>Graphic Designer</td>
-                            <td>Marketing</td>
-                            <td>Probationary</td>
-                            <td>Part-Time</td>
-                            <td>2021-01-20</td>
-                        </tr>
-
-                        <tr>
-                            <td>EMP004</td>
-                            <td>Michael Lee</td>
-                            <td>1992-08-09</td>
-                            <td>mlee@email.com</td>
-                            <td>Accountant</td>
-                            <td>Finance</td>
-                            <td>Regular</td>
-                            <td>Full-Time</td>
-                            <td>2019-09-15</td>
-                        </tr>
+                    <tbody id="employee-table-body">
+                    <!-- Employee data will be inserted here via JavaScript -->
                     </tbody>
+
                 </table>
-        
+
+
+
                 <div class="divider"></div>
         
                 <!-- Split layout container for the 2-column layout -->
@@ -140,5 +128,8 @@
 
 
     <div id="footer-placeholder"></div>
+
+
+    <script src="../js/employee.js"></script>
 </body>
 </html>

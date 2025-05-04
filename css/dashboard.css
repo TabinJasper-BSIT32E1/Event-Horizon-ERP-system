@@ -1,118 +1,88 @@
 html, body {
     margin: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
     font-family: Arial, sans-serif;
+
 }
 
 #content-container {
     flex: 1; 
-    margin: 0;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .dashboard {
     display: grid;
-    grid-template-columns: repeat(12, 1fr); 
+    grid-template-columns: repeat(12, 1fr);
     gap: 20px;
-}
-
-/* Card Styles */
-.card {
+    padding-bottom: 20px;
+    width: 100%;        
+    height: auto;       
+    max-width: 1200px;  
+    margin: 0 auto;     
+  }
+  
+  .dashboard h2 {
+    grid-column: span 12; /* Make it span the full width of the grid */
+    margin-bottom: 10px;   /* Add space below the heading */
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .card {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 12px;
     text-align: center;
-}
-
-/* Line Chart Card */
-.chart-card {
-    grid-column: span 8; 
-    grid-row: span 2; 
-}
-
-.chart-card h2 {
-    margin-bottom: 20px;
-}
-
-/* Pie Chart Card */
-.pie-card {
-    grid-column: span 4;
-    grid-row: span 2; 
-}
-
-.pie-card h3 {
+  }
+  
+  .chart-card { grid-column: span 8; grid-row: span 2; }
+  .pie-card   { grid-column: span 4; grid-row: span 2; }
+  .employee-card { grid-column: span 4; }
+  .summary-card  { grid-column: span 8; }
+  
+  .pie-card h3,
+  .employee-card h3,
+  .summary-card h3 {
     margin-bottom: 10px;
-}
-
-.legend {
+  }
+  
+  .employee-icon {
+    font-size: 100px;
+    margin: 10px 0;
+  }
+  
+  .employee-count {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .legend {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 10px;
-}
-
-.legend-box {
-    display: inline-block;
+  }
+  
+  .legend-box {
     width: 15px;
     height: 15px;
     border-radius: 3px;
-}
-
-.legend-box.present {
-    background-color: #4caf50;
-}
-
-.legend-box.absent {
-    background-color: #f44336;
-}
-
-/* Total Employees Card */
-.employee-card {
-    grid-column: span 4; 
-    grid-row: span 1; 
-}
-
-.employee-card h3 {
-    margin-bottom: 10px;
-}
-
-.employee-icon {
-    font-size: 100px;
-    margin: 10px 0;
-}
-
-.employee-count {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* Summary Report Card */
-.summary-card {
-    grid-column: span 8; 
-    grid-row: span 1; 
-}
-
-.summary-card h3 {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.summary-grid {
+    display: inline-block;
+  }
+  
+  .present { background: #4caf50; }
+  .absent  { background: #f44336; }
+  
+  .summary-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-}
-
-.summary-circle {
-    background-color: #007bff;
+  }
+  
+  .summary-circle {
+    background: #007bff;
     color: #fff;
     border-radius: 50%;
     width: 180px;
@@ -120,11 +90,11 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: auto;
     font-size: 14px;
     font-weight: bold;
-}
+  }
 
-.summary-circle.blue {
-    background-color: #007bff;
-}
+  .summary-card h3 {
+    text-align: left;
+  }

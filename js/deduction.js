@@ -1,242 +1,302 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.querySelector(".deductions-table tbody");
-    const addModal = document.getElementById("add-deduction-modal");
-    const editModal = document.getElementById("edit-deduction-modal");
-    const addForm = document.getElementById("add-deduction-form");
-    const editForm = document.getElementById("edit-deduction-form");
-    const closeAddModalBtn = document.getElementById("close-modal");
-    const closeEditModalBtn = document.getElementById("close-edit-modal");
+let deductions = [];
+let currentPage = 1;
+let rowsPerPage = 5;
+let searchTerm = '';
+let editId = null;
+let deleteId = null;
 
-    let editingRow = null; // Reference to the row being edited
-    let editingId = null;  // ID of the deduction being edited
+// DOM Elements
+const tableBody = document.querySelector('.deductions-table tbody');
+const paginationInfo = document.querySelector('.pagination span');
+const entriesSelect = document.getElementById('entries');
+const searchBox = document.getElementById('search-box');
 
-    // Load existing deductions
-    function loadDeductions() {
-        fetch('../html/deduction.php?action=get')
-            .then(response => response.json())
-            .then(data => {
-                if (data.success && data.deductions) {
-                    tableBody.innerHTML = ''; // Clear existing rows
-                    data.deductions.forEach(deduction => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${deduction.Description}</td>
-                            <td>${parseFloat(deduction.Amount).toFixed(2)}</td>
-                            <td>
-                                <button class="btn btn-edit" data-id="${deduction.DeductionID}">
-                                    <i class="fas fa-edit"></i> Edit
-                                </button>
-                                <button class="btn btn-delete" data-id="${deduction.DeductionID}">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
-                            </td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                } else {
-                    alert('Error loading deductions: ' + (data.message || 'Unknown error'));
-                }
-            })
-            .catch(error => {
-                console.error('Error loading deductions:', error);
-                alert('An error occurred while loading deductions.');
-            });
+// Initialize the application
+document.addEventListener('DOMContentLoaded', () => {
+    fetchDeductions();
+    
+    // Setup event listeners
+    entriesSelect.addEventListener('change', updateEntries);
+    searchBox.addEventListener('input', updateSearch);
+    document.querySelector('.btn.btn-primary').addEventListener('click', showAddModal);
+    document.getElementById('close-modal').addEventListener('click', closeAddModal);
+    document.getElementById('close-edit-modal').addEventListener('click', closeEditModal);
+    document.getElementById('close-delete-modal').addEventListener('click', closeDeleteModal);
+    document.getElementById('add-deduction-form').addEventListener('submit', handleAddDeduction);
+    document.getElementById('edit-deduction-form').addEventListener('submit', handleEditDeduction);
+    document.getElementById('confirm-delete').addEventListener('click', confirmDelete);
+
+    // Robust event delegation for edit/delete buttons
+    tableBody.addEventListener('click', function(e) {
+        // Handle clicks on either buttons or their icons
+        const target = e.target.closest('.btn-edit, .btn-delete, .fa-edit, .fa-trash');
+        if (!target) return;
+        
+        // Get the actual button element
+        const btn = target.classList.contains('btn-edit') || target.classList.contains('btn-delete') 
+                   ? target 
+                   : target.closest('.btn-edit, .btn-delete');
+        
+        if (!btn) return;
+        
+        const id = btn.getAttribute('data-id');
+        
+        if (btn.classList.contains('btn-edit')) {
+            editDeduction(id);
+        } else if (btn.classList.contains('btn-delete')) {
+            deleteDeduction(id);
+        }
+    });
+});
+
+function editDeduction(id) {
+    // Find the deduction with the given ID
+    const deduction = deductions.find(d => d.DeductionID == id);
+    if (!deduction) return;
+
+    // Set the editId to keep track of the current deduction being edited
+    editId = id;
+
+    // Pre-fill the modal form fields with the deduction data
+    document.getElementById('edit-description').value = deduction.Description;
+    document.getElementById('edit-amount').value = deduction.Amount;
+
+    // Show the edit modal
+    document.getElementById('edit-deduction-modal').style.display = 'block';
+}
+
+
+// Fetch deductions from server
+function fetchDeductions() {
+    fetch('deduction.php?action=get')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                deductions = data.deductions;
+                renderTable();
+            } else {
+                alert('Error loading deductions: ' + (data.message || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
+            alert('Network error loading deductions');
+        });
+}
+
+// Render the table with pagination
+function renderTable() {
+    const filtered = deductions.filter(item =>
+        item.Description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.DeductionID.toString().includes(searchTerm)
+    );
+
+    const total = filtered.length;
+    const start = (currentPage - 1) * rowsPerPage;
+    const paginated = filtered.slice(start, start + rowsPerPage);
+
+    tableBody.innerHTML = '';
+    paginated.forEach(d => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${d.Description}</td>
+            <td>${parseFloat(d.Amount).toFixed(2)}</td>
+            <td>
+                <button class="btn btn-edit" data-id="${d.DeductionID}">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-delete" data-id="${d.DeductionID}">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        `;
+        tableBody.appendChild(row);
+    });
+
+    updatePaginationInfo(total, start, paginated.length);
+    updatePaginationControls(Math.ceil(total / rowsPerPage));
+}
+
+// Update pagination information
+function updatePaginationInfo(total, start, paginatedLength) {
+    const showingStart = total === 0 ? 0 : start + 1;
+    const showingEnd = start + paginatedLength;
+    paginationInfo.textContent = `Showing ${showingStart} to ${showingEnd} of ${total} entries`;
+}
+
+// Update pagination controls
+function updatePaginationControls(totalPages) {
+    const container = document.querySelector('.pagination-controls');
+    container.innerHTML = `
+        <button class="btn btn-pagination" ${currentPage === 1 ? 'disabled' : ''}>
+            Previous
+        </button>
+        <span class="page-number active">${currentPage}</span>
+        <button class="btn btn-pagination" ${currentPage >= totalPages ? 'disabled' : ''}>
+            Next
+        </button>
+    `;
+    
+    container.querySelector('.btn-pagination:first-child').addEventListener('click', () => changePage(currentPage - 1));
+    container.querySelector('.btn-pagination:last-child').addEventListener('click', () => changePage(currentPage + 1));
+}
+
+// Change page number
+function changePage(page) {
+    const totalPages = Math.ceil(deductions.filter(d =>
+        d.Description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        d.DeductionID.toString().includes(searchTerm)
+    ).length / rowsPerPage);
+
+    if (page >= 1 && page <= totalPages) {
+        currentPage = page;
+        renderTable();
+    }
+}
+
+// Update number of rows per page
+function updateEntries() {
+    rowsPerPage = parseInt(entriesSelect.value, 10);
+    currentPage = 1;
+    renderTable();
+}
+
+// Update search term
+function updateSearch(e) {
+    searchTerm = e.target.value;
+    currentPage = 1;
+    renderTable();
+}
+
+function showAddModal() {
+    document.getElementById('add-deduction-modal').style.display = 'block';
+}
+
+function closeAddModal() {
+    document.getElementById('add-deduction-modal').style.display = 'none';
+    document.getElementById('add-deduction-form').reset();
+}
+
+function closeEditModal() {
+    document.getElementById('edit-deduction-modal').style.display = 'none';
+    document.getElementById('edit-deduction-form').reset();
+}
+
+function closeDeleteModal() {
+    document.getElementById('delete-deduction-modal').style.display = 'none';
+}
+
+/* CRUD Operations */
+async function handleAddDeduction(e) {
+    e.preventDefault();
+    
+    // Get values from the form
+    const description = document.getElementById('description').value.trim();
+    const amount = parseFloat(document.getElementById('amount').value.trim());
+
+    // Validate input
+    if (!description || isNaN(amount) || amount <= 0) {
+        alert('Invalid input: Please check your Description and Amount');
+        return;
     }
 
-    // Open Add Modal
-    document.querySelector(".btn-primary").addEventListener("click", function () {
-        addForm.reset();
-        addModal.style.display = "flex";
-    });
+    // Prepare data to send as JSON
+    const data = {
+        description: description,
+        amount: amount
+    };
 
-    // Close Add Modal
-    closeAddModalBtn.addEventListener("click", function () {
-        addModal.style.display = "none";
-    });
-
-    // Close Edit Modal
-    closeEditModalBtn.addEventListener("click", function () {
-        editModal.style.display = "none";
-    });
-
-    // Close modals when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-        if (event.target === addModal) {
-            addModal.style.display = "none";
-        }
-        if (event.target === editModal) {
-            editModal.style.display = "none";
-        }
-    });
-
-    // Handle Add Form Submission
-    addForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(addForm);
-        const jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });
-
-        // Send data to PHP script using fetch API
-        fetch('../html/deduction.php', {
+    try {
+        const response = await fetch('deduction.php', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(jsonData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const newRow = document.createElement('tr');
-                newRow.innerHTML = `
-                    <td>${jsonData.description}</td>
-                    <td>${parseFloat(jsonData.amount).toFixed(2)}</td>
-                    <td>
-                        <button class="btn btn-edit" data-id="${data.id}">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                        <button class="btn btn-delete" data-id="${data.id}">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </td>
-                `;
-                tableBody.appendChild(newRow);
-
-                addForm.reset();
-                addModal.style.display = "none";
-                alert('Deduction saved successfully!');
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred: ' + error.message);
+            body: JSON.stringify(data) // Send the data as JSON
         });
-    });
-
-    // Open Edit Modal
-    tableBody.addEventListener("click", function (event) {
-        if (event.target.closest(".btn-edit")) {
-            const editButton = event.target.closest(".btn-edit");
-            editingRow = editButton.closest("tr");
-            editingId = editButton.dataset.id;
-
-            // Populate the form with existing data
-            const description = editingRow.querySelector("td:nth-child(1)").textContent;
-            const amount = editingRow.querySelector("td:nth-child(2)").textContent;
-
-            document.getElementById("edit-description").value = description;
-            document.getElementById("edit-amount").value = amount;
-
-            editModal.style.display = "flex";
+        const result = await response.json();
+        
+        if (result.success) {
+            closeAddModal();
+            fetchDeductions();
+        } else {
+            alert('Error: ' + (result.message || 'Failed to add deduction'));
         }
-    });
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error while adding deduction');
+    }
+}
 
-    // Handle Edit Form Submission
-    editForm.addEventListener("submit", function (event) {
-        event.preventDefault();
 
-        const formData = new FormData(editForm);
-        const jsonData = {};
-        formData.forEach((value, key) => {
-            jsonData[key] = value;
-        });
-        jsonData["id"] = editingId; // Add ID for editing
-
-        // Send data to PHP script using fetch API
-        fetch('../html/deduction.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(jsonData),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Update the existing row in the table
-                editingRow.querySelector("td:nth-child(1)").textContent = jsonData.description;
-                editingRow.querySelector("td:nth-child(2)").textContent = parseFloat(jsonData.amount).toFixed(2);
-
-                // Close the modal
-                editModal.style.display = "none";
-                alert('Deduction updated successfully!');
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred: ' + error.message);
-        });
-    });
-    // Initial load
-    loadDeductions();
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.querySelector(".deductions-table tbody");
-    const deleteModal = document.getElementById("delete-deduction-modal");
-    const closeDeleteModalBtn = document.getElementById("close-delete-modal");
-    const confirmDeleteBtn = document.getElementById("confirm-delete");
-    const deleteDescription = document.getElementById("delete-deduction-description");
-
-    let rowToDelete = null; // Reference to the row being deleted
-    let deleteId = null;    // ID of the deduction being deleted
-
-    // Open Delete Modal
-    tableBody.addEventListener("click", function(event) {
-        if (event.target.closest(".btn-delete")) {
-            const deleteButton = event.target.closest(".btn-delete");
-            rowToDelete = deleteButton.closest("tr");
-            deleteId = deleteButton.dataset.id;
+// Handle form submission for updating the deduction
+async function handleEditDeduction(e) {
+    e.preventDefault();
     
-            const description = rowToDelete.querySelector("td:nth-child(1)").textContent;
-            
-            // Set the title and data separately
-            document.getElementById('delete-deduction-title').textContent = "DELETE DEDUCTION";
-            document.getElementById('delete-deduction-data').textContent = description;
-            
-            deleteModal.style.display = "flex";
-        }
-    });
+    // Get the updated description and amount values
+    const description = document.getElementById('edit-description').value.trim();
+    const amount = parseFloat(document.getElementById('edit-amount').value.trim());
 
-    // Close Delete Modal
-    closeDeleteModalBtn.addEventListener("click", function () {
-        deleteModal.style.display = "none";
-    });
+    // Validate input
+    if (!description || isNaN(amount) || amount <= 0) {
+        alert('Invalid input: Please check your Description and Amount');
+        return;
+    }
 
-    // Confirm Delete
-    confirmDeleteBtn.addEventListener("click", function () {
-        if (deleteId) {
-            fetch(`../html/deduction.php?action=delete&id=${deleteId}`, {
-                method: 'GET',
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    rowToDelete.remove(); // Remove the row from the table
-                    deleteModal.style.display = "none";
-                    alert('Deduction deleted successfully!');
-                } else {
-                    alert('Error: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred: ' + error.message);
-            });
-        }
-    });
+    // Prepare the data to be sent for the update
+    const data = {
+        id: editId,  // Include the ID of the deduction being updated
+        description: description,
+        amount: amount
+    };
 
-    // Close modal when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-        if (event.target === deleteModal) {
-            deleteModal.style.display = "none";
+    try {
+        const response = await fetch('deduction.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)  // Send the data as JSON
+        });
+
+        const result = await response.json();
+        
+        if (result.success) {
+            closeEditModal();
+            fetchDeductions();  // Refresh the table data after successful update
+        } else {
+            alert('Error: ' + (result.message || 'Failed to update deduction'));
         }
-    });
-});
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error while updating deduction');
+    }
+}
+
+
+function deleteDeduction(id) {
+    const deduction = deductions.find(d => d.DeductionID == id);
+    if (!deduction) return;
+    
+    deleteId = id;
+    document.getElementById('delete-deduction-data').textContent = 
+        `${deduction.Description} (${deduction.Amount})`;
+    document.getElementById('delete-deduction-modal').style.display = 'block';
+}
+
+async function confirmDelete() {
+    try {
+        const response = await fetch(`deduction.php?action=delete&id=${deleteId}`);
+        const result = await response.json();
+        
+        if (result.success) {
+            closeDeleteModal();
+            fetchDeductions();
+        } else {
+            alert('Error: ' + (result.message || 'Failed to delete deduction'));
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Network error while deleting deduction');
+    }
+}

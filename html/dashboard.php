@@ -24,25 +24,31 @@
           <div class="dashboard">
           <h2>PAYROLL REPORTS</h2>
                   <!-- Line Chart Card -->
-              <div class="card chart-card">
-                    <canvas id="linegraph"></canvas>
-                  </div>
-                  <!-- Pie Chart Card -->
-                  <div class="card pie-card">
-                    <h3>MM/DD/YY - MM/DD/YY</h3>
-                    <canvas id="piechart"></canvas>
-                    <div class="legend">
-                      <div><span class="legend-box present"></span> Present</div>
-                      <div><span class="legend-box absent"></span> Absent</div>
-                    </div>
-                  </div>
+                  <div class="card chart-card">
+  <a href="../html/reports.php" class="card-link" data-target="../html/reports.php" onclick="notifySidebar(event, this)">
+      <canvas id="linegraph"></canvas>
+  </a>
+</div>
 
-                  <!-- Total Employees Card -->
-                  <div class="card employee-card">
-                    <h3>Total No. of Employees</h3>
-                    <div class="employee-icon">👤</div>
-                    <div class="employee-count">1,000</div>
-                  </div>
+<div class="card pie-card">
+  <a href="../html/attendance.php" class="card-link" onclick="notifySidebar(event, this)">
+    <h3>MM/DD/YY - MM/DD/YY</h3>
+    <canvas id="piechart"></canvas>
+    <div class="legend">
+      <div><span class="legend-box present"></span> Present</div>
+      <div><span class="legend-box absent"></span> Absent</div>
+    </div>
+  </a>
+</div>
+
+<div class="card employee-card">
+  <a href="../html/employee.php" class="card-link" data-target="../html/employee.php" onclick="notifySidebar(event, this)">
+      <h3>Total No. of Employees</h3>
+      <div class="employee-icon">👤</div>
+      <div class="employee-count">1,000</div>
+  </a>
+</div>
+
 
                   <!-- Summary Report Card -->
                   <div class="card summary-card">
@@ -66,5 +72,13 @@
     <script src="../js/graphs.js?ver=<?php echo time(); ?>"></script>
     <script src="../js/header.js"></script>
     <script src="../js/footer.js"></script>
+
+    <script>
+function notifySidebar(event, link) {
+  event.preventDefault(); // Prevent default navigation
+  const url = link.getAttribute('href'); // Get the URL from the card link
+  window.parent.postMessage({ type: 'navigate', target: url }, '*'); // Notify the parent (sidebar.js) to update the iframe and highlight the active link
+}
+</script>
 </body>
 </html>

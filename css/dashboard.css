@@ -22,6 +22,23 @@ html, body {
     margin: 0 auto;     
   }
   
+  .dashboard a {
+    display: block;                /* Makes the link fill the grid area */
+    text-decoration: none;        /* Removes underline */
+    color: inherit;               /* Inherits text color */
+  }
+  
+  .dashboard a .card {
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .dashboard a:hover .card {
+    transform: translateY(-4px);  /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  
+  
   .dashboard h2 {
     grid-column: span 12; /* Make it span the full width of the grid */
     margin-bottom: 10px;   /* Add space below the heading */

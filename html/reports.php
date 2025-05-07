@@ -1,5 +1,11 @@
 <?php
-// No PHP logic yet, but structure is now PHP ready
+    include '../database/database.php';
+
+    $sql = "SELECT EmployeeID FROM tblemployees";
+    $result = mysqli_query($conn, $sql);
+
+    //fetch total employees
+    $totalEmployees = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +39,7 @@
                     <div class="summary-grid">
                         <div class="summary-item">
                             <span>Total Employees</span>
-                            <span>0</span>
+                            <span><?php echo $totalEmployees ?></span>
                         </div>
                         <div class="summary-item">
                             <span>Total Deductions</span>

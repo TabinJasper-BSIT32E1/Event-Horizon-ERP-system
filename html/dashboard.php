@@ -1,5 +1,11 @@
 <?php
-// No PHP logic yet, but structure is now PHP ready
+    include '../database/database.php';
+
+    $sql = "SELECT EmployeeID FROM tblemployees";
+    $result = mysqli_query($conn, $sql);
+
+    //fetch total employees
+    $totalEmployees = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +19,6 @@
     <link rel="stylesheet" href="../css/dashboard.css?ver=<?php echo time(); ?>" />    
     <link rel="stylesheet" href="../css/header.css?ver=<?php echo time(); ?>" />
     <link rel="stylesheet" href="../css/footer.css?ver=<?php echo time(); ?>" />
-    
 </head>
 
 <body>
@@ -45,7 +50,7 @@
   <a href="../html/employee.php" class="card-link" data-target="../html/employee.php" onclick="notifySidebar(event, this)">
       <h3>Total No. of Employees</h3>
       <div class="employee-icon">👤</div>
-      <div class="employee-count">1,000</div>
+      <div class="employee-count"><?php echo$totalEmployees?></div>
   </a>
 </div>
 

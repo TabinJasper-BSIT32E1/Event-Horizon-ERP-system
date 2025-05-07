@@ -1,6 +1,22 @@
 <?php
-// No PHP logic yet, but structure is now PHP ready
+  include '../database/database.php';
+
+  $sql = "SELECT * FROM tblattendance";
+  $result = mysqli_query($conn, $sql);
+
+  $attendanceData = [];
+
+  if (mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $attendanceData[] = $row;
+    }
+  }
 ?>
+
+<script>
+  // Make PHP array available to JS
+  const attendanceData = <?php echo json_encode($attendanceData); ?>;
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,64 +58,24 @@
                 <div>Employee ID</div>
               </div>
               <div class="stats-header">
-                <div>Leave Days</div>
-                <div>Undertime</div>
+                <div>Attendance Date</div>
+                <div>Time In</div>
+                <div>Time Out</div>
+                <div>Status</div>
               </div>
             </div>
             
-            <!-- This part is a sample only for visual representation -->
-            <div class="attendance-data">
-              <div class="attendance-row">
-                <div class="employee-info">
-                  <div>EMP-1001</div>
-                </div>
-                <div class="employee-stats">
-                  <div>2</div>
-                  <div>1.5</div>
-                </div>
-              </div>         
-            </div>
+            <!-- JAVASCRIPT NA MAY SILBI DITO -->
 
-            <div class="attendance-data">
-                <div class="attendance-row">
-                  <div class="employee-info">
-                    <div>EMP-1002</div>
-                  </div>
-                  <div class="employee-stats">
-                    <div>2</div>
-                    <div>1.5</div>
-                  </div>
-                </div>         
-              </div>
-            
-            <div class="attendance-data">
-                <div class="attendance-row">
-                  <div class="employee-info">
-                    <div>EMP-1003</div>
-                  </div>
-                  <div class="employee-stats">
-                    <div>2</div>
-                    <div>1.5</div>
-                  </div>
-                </div>         
-              </div>
+            <div id="attendanceContainer" class="attendance-data"></div>
+            <div id="paginationControls" class="pagination-controls" style="margin-top: 20px;"></div>
 
-            <div class="attendance-data">
-                <div class="attendance-row">
-                  <div class="employee-info">
-                    <div>EMP-1003</div>
-                  </div>
-                  <div class="employee-stats">
-                    <div>2</div>
-                    <div>1.5</div>
-                  </div>
-                </div>         
-              </div>
           </div>
       </div>
   </div>
 
   <div id="footer-placeholder"></div>
+  <script src="../js/attendance.js"></script>
 </body>
 
 </html>

@@ -58,7 +58,7 @@
                 <div class="header-row">
                     <h1 class="employee-title">Employee Details</h1>
                     <div class="search-container">
-                        <input type="text" placeholder="Search..." />
+                        <input type="text" placeholder="Search ID" />
                     </div>
                 </div>
         
@@ -86,42 +86,6 @@
 
 
                 <div class="divider"></div>
-        
-                <!-- Split layout container for the 2-column layout -->
-                <div class="split-layout">
-                    <div class="left-column">
-                        <div class="info-section">
-                            <h3 class="section-title">Tax Information</h3>
-                            <ul>
-                                <li>SSS:</li>
-                                <li>Pag-ibig:</li>
-                                <li>Philhealth:</li>
-                                <li>Tin ID No:</li>
-                            </ul>
-                        </div>
-        
-                        <div class="info-section">
-                            <h3 class="section-title">Bank Account Information</h3>
-                            <ul>
-                                <li>Bank Name:</li>
-                                <li>Account Name:</li>
-                                <li>Account Number:</li>
-                                <li>Bank Routing Number/Branch Code:</li>
-                            </ul>
-                        </div>
-                    </div>
-        
-                    <div class="right-column">
-                        <div class="info-section">
-                            <h3 class="section-title">Compensation Details</h3>
-                            <ul>
-                                <li>Salary/Wage Rate:</li>
-                                <li>Standard Hours per Pay Period:</li>
-                                <li>Overtime Rules:</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

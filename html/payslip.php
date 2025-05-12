@@ -17,12 +17,6 @@
 </head>
 
 <body>
-
-    <script src="../js/header.js" defer></script>
-    <script src="../js/footer.js" defer></script>
-
-    <div id="header-placeholder"></div>
-
     <div id="content-container">
 
     <!-- First Section -->
@@ -151,11 +145,8 @@
     <!-- Sixth Section -->
 
     <div class="back-button-container">
-        <button class="btn-back">Back</button>
-    </div>
-
-    <div id="footer-placeholder"></div>
-
+  <button class="btn-back" onclick="window.close()">Back</button>
+</div>
 
 </body>
 </html>

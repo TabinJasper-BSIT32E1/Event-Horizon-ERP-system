@@ -256,15 +256,38 @@
 
   
     <!-- Fifth Section -->
-        <div class="generate-button-container">
-          <button class="btn-generate">Generate Payslip</button>
-        </div>
+    <div class="generate-button-container">
+  <button class="btn-generate" onclick="openPayslipPopup()">Generate Payslip</button>
+</div>
+
       </div>
     </div>
            
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
+
+
+    <!-- Scripts -->
+    <script>
+      function openPayslipPopup() {
+        const popupWidth  = 900;  
+        const popupHeight = 900; 
+
+        const left = Math.floor((window.screen.availWidth  - popupWidth)  / 2);
+        const top  = Math.floor((window.screen.availHeight - popupHeight) / 2);
+
+        window.open(
+          'payslip.php',
+          'PayslipPopup',
+          `width=${popupWidth},height=${popupHeight},` +
+          `top=${top},left=${left},` +
+          `resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,status=no`
+        );
+      }
+    </script>
+
+
 
     <script src="../js/header.js" defer></script>
     <script src="../js/footer.js" defer></script>

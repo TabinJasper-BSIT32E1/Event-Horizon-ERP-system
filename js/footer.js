@@ -1,5 +1,5 @@
+// Footer JavaScript to load footer.php dynamically
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if the footer-placeholder element exists
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {
         fetch('../includes/footer.php')

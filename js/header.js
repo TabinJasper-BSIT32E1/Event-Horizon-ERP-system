@@ -1,5 +1,5 @@
+// Header JavaScript to load header.php dynamically
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if the element exists
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (headerPlaceholder) {
         fetch('../includes/header.php')

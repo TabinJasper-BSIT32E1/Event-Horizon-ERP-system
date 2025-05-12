@@ -1,13 +1,11 @@
-// new file pang function ng table sa employees
-
-let currentPage = 0; //Also make sure currentPage is declared globally; Place it outside any function, near the top of your DOMContentLoaded callback. -chatGPT
+let currentPage = 0; 
 
 document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.querySelector('.search-container input');
     const tableBody = document.getElementById('employee-table-body');
 
     function fetchEmployees(query = '', page = 0) {
-        const limit = 5; //limit value display sa table 
+        const limit = 5; // Number of records per page
         const offset = page * limit;
     
         fetch(`../html/employee.php?api=1&query=${query}&limit=${limit}&offset=${offset}`)
@@ -54,9 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     searchInput.addEventListener('input', function () {
-        currentPage = 0; // Reset to first page on new search
+        currentPage = 0; 
         fetchEmployees(searchInput.value, currentPage);
     });
 
-    fetchEmployees(); // Load first page on load
+    fetchEmployees(); 
 });

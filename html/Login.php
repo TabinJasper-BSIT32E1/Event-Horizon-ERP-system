@@ -21,7 +21,6 @@
             <p>PUSHING BOUNDARIES,BUILDING FUTURES</p>
         </div>
         <div class="login-section">
-            <!-- Title and Subtitle moved outside the login-box -->
             <div class="login-header">
                 <h1>EVENT <span class="gray-text">HORIZON</span></h1>
                 <p>PUSHING BOUNDARIES,BUILDING FUTURES</p>  

@@ -100,173 +100,174 @@
 </head>
 
 <body>
-    <script src="../js/header.js" defer></script>
-    <script src="../js/footer.js" defer></script>
-
+    <!-- Header -->
     <div id="header-placeholder"></div>
 
     <div id="content-container">
-         <!-- First Section -->
- <div class="employee-card">
-    <img src="../assets/img/test image.jpg" alt="Employee Avatar" class="employee-avatar">
+      <div class="employee-card">
+          <img src="../assets/img/test image.jpg" alt="Employee Avatar" class="employee-avatar">
   
-    <div class="employee-info">
-      <div class="employee-name-id">
-        <span class="employee-id">1001</span>
-        <span class="employee-name">Posa</span>
+        <!-- First Section -->
+        <div class="employee-info">
+          <div class="employee-name-id">
+            <span class="employee-id">1001</span>
+            <span class="employee-name">Posa</span>
+          </div>
+          <div class="employee-position">HR Officer</div>
+          <div class="employee-tags">
+            <span class="tag blue">POSA</span>
+            <span class="tag yellow">Hired: Jun 15, 2023</span>
+          </div>
+        </div>
+
+        <!-- Search  -->
+        <div class="search-container">
+          <form method="GET" action="">
+            <input type="text" name="query" autocomplete="off" autofocus placeholder="Search by Employee ID..." value="<?php echo htmlspecialchars($search); ?>" />
+            <button type="submit">Search</button>
+          </form>
+        </div>
       </div>
-      <div class="employee-position">HR Officer</div>
+
+        <!-- Second Section -->
+        <div class="summary-cards">
+          <div class="card highlight">
+            <?php echo 'PHP ' . number_format($basicSalary, 2); ?><br>
+            <small>Basic Salary</small>
+          </div>
+          <div class="card highlight">
+            <?php echo $overtimePay ?><br>
+            <small>Overtime Pay</small></div>
+          <div class="card highlight">
+            <?php echo $totalEarnings ?><br>
+            <small>Total Earnings</small></div>
+          <div class="card highlight">
+            <?php echo $totalDeductions ?><br>
+            <small> Deductions</small></div>
+        </div>  
+
+        <!-- Third Section -->
+        <div class="payslip-container">
+          <div class="three-column-layout">
+              <!-- Employee Information Column -->
+            <div class="column">
+              <h3>Employee Information</h3>
+              <table class="info-table">
+                <tr>
+                  <th>Employee ID</th>
+                  <td><?php echo $empID;?></td>
+                </tr>
+                <tr>
+                  <th>Name</th>
+                  <td><?php echo $name;?></td>
+                </tr>
+                <tr>
+                  <th>Job Title</th>
+                  <td><?php echo $jobTitle;?></td>
+                </tr>
+                <tr>
+                  <th>Department Type</th>
+                  <td><?php echo $deptType;?></td>
+                </tr>
+                <tr>
+                  <th>Date Hired</th>
+                  <td><?php echo $dateHired;?></td>
+                </tr>
+              </table>
+            </div>
+
+
+            <!-- Fourth Section Details -->
+            <div class="column">
+              <h3>Compensation Details</h3>
+              <table class="info-table">
+                <tr>
+                  <th>Basic Salary</th>
+                  <td><?php echo 'PHP ' . number_format($basicSalary, 2); ?></td>
+                </tr>
+                <tr>
+                  <th>Standard Hours</th>
+                  <td><?php echo $standardHours ?></td>
+                </tr>
+                <tr>
+                  <th>Overtime Hours</th>
+                  <td><?php echo $overtimeHours ?></td>
+                </tr>
+                <tr>
+                  <th>Overtime Rate</th>
+                  <td><?php echo $overtimeRate ?></td>
+                </tr>
+              </table>
+            </div>
   
-      <div class="employee-tags">
-        <span class="tag blue">POSA</span>
-        <span class="tag yellow">Hired: Jun 15, 2023</span>
-      </div>
-    </div>
-    <!-- bop -->
-    <div class="search-container">
-      <form method="GET" action="">
-        <input type="text" name="query" autocomplete="off" autofocus placeholder="Search by Employee ID..." value="<?php echo htmlspecialchars($search); ?>" />
-        <button type="submit">Search</button>
-      </form>
-    </div>
-    <!-- bop -->
-  </div>
-
-  <!-- Second Section -->
-  <div class="summary-cards">
-    <div class="card highlight">
-      <?php echo 'PHP ' . number_format($basicSalary, 2); ?><br>
-      <small>Basic Salary</small>
-    </div>
-    <div class="card highlight">
-      <?php echo $overtimePay ?><br>
-      <small>Overtime Pay</small></div>
-    <div class="card highlight">
-      <?php echo $totalEarnings ?><br>
-      <small>Total Earnings</small></div>
-    <div class="card highlight">
-      <?php echo $totalDeductions ?><br>
-      <small> Deductions</small></div>
-  </div>  
-
-  <!-- Fourth Section -->
-  <div class="payslip-container">
-     <div class="three-column-layout">
-        <!-- Employee Information Column -->
-      <div class="column">
-        <h3>Employee Information</h3>
-        <table class="info-table">
-          <tr>
-            <th>Employee ID</th>
-            <td><?php echo $empID;?></td>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <td><?php echo $name;?></td>
-          </tr>
-          <tr>
-            <th>Job Title</th>
-            <td><?php echo $jobTitle;?></td>
-          </tr>
-          <tr>
-            <th>Department Type</th>
-            <td><?php echo $deptType;?></td>
-          </tr>
-          <tr>
-            <th>Date Hired</th>
-            <td><?php echo $dateHired;?></td>
-          </tr>
-        </table>
-      </div>
-
-
-      <!-- Compensation Details Column -->
-      <div class="column">
-        <h3>Compensation Details</h3>
-        <table class="info-table">
-          <tr>
-            <th>Basic Salary</th>
-            <td><?php echo 'PHP ' . number_format($basicSalary, 2); ?></td>
-          </tr>
-          <tr>
-            <th>Standard Hours</th>
-            <td><?php echo $standardHours ?></td>
-          </tr>
-          <tr>
-            <th>Overtime Hours</th>
-            <td><?php echo $overtimeHours ?></td>
-          </tr>
-          <tr>
-            <th>Overtime Rate</th>
-            <td><?php echo $overtimeRate ?></td>
-          </tr>
-        </table>
-      </div>
-  
-      <!-- Earnings & Deductions Column -->
-      <div class="column">
-        <h3>Earnings & Deductions</h3>
-        <table class="earnings-table">
-          <thead>
-            <tr>
-              <th>Description</th>
-              <th>Earnings (P)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Basic Salary</td>
-              <td><?php echo 'PHP ' . number_format($basicSalary, 2); ?></td>
-            </tr>
-            <tr>
-              <td>Overtime Pay</td>
-              <td><?php echo $overtimePay ?></td>
-            </tr>
-            <tr>
-              <td>Allowances</td>
-              <td><?php echo $allowance ?></td>
-            </tr>
-            <thead>
-            <tr>
-              <th>Description</th>
-              <th>Deductions (P)</th>
-            </tr>
-          </thead>
-            <tr>
-              <td>SSS</td>
-              <td><?php echo $sssDeduction ?></td>
-            </tr>
-            <tr>
-              <td>Pag-IBIG</td>
-              <td><?php echo $pagibigDeduction ?></td>
-            </tr>
-            <tr>
-              <td>PhilHealth</td>
-              <td><?php echo $philhealthDeduction ?></td>
-            </tr>
-            <tr>
-              <td>Absent</td>
-              <td><?php echo $absentDeductions ?></td>
-            </tr>
-            <tr class="total-row">
-              <td><strong>Total</strong></td>
-              <td><strong><?php echo $total ?></strong></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+          <!-- Earnings & Deductions Column -->
+          <div class="column">
+            <h3>Earnings & Deductions</h3>
+            <table class="earnings-table">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Earnings (P)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Basic Salary</td>
+                  <td><?php echo 'PHP ' . number_format($basicSalary, 2); ?></td>
+                </tr>
+                <tr>
+                  <td>Overtime Pay</td>
+                  <td><?php echo $overtimePay ?></td>
+                </tr>
+                <tr>
+                  <td>Allowances</td>
+                  <td><?php echo $allowance ?></td>
+                </tr>
+                <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Deductions (P)</th>
+                </tr>
+              </thead>
+                <tr>
+                  <td>SSS</td>
+                  <td><?php echo $sssDeduction ?></td>
+                </tr>
+                <tr>
+                  <td>Pag-IBIG</td>
+                  <td><?php echo $pagibigDeduction ?></td>
+                </tr>
+                <tr>
+                  <td>PhilHealth</td>
+                  <td><?php echo $philhealthDeduction ?></td>
+                </tr>
+                <tr>
+                  <td>Absent</td>
+                  <td><?php echo $absentDeductions ?></td>
+                </tr>
+                <tr class="total-row">
+                  <td><strong>Total</strong></td>
+                  <td><strong><?php echo $total ?></strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
   
     <!-- Fifth Section -->
-  <div class="generate-button-container">
-    <button class="btn-generate">Generate Payslip</button>
-  </div>
-</div>
+        <div class="generate-button-container">
+          <button class="btn-generate">Generate Payslip</button>
+        </div>
+      </div>
     </div>
            
 
+    <!-- Footer -->
     <div id="footer-placeholder"></div>
+
+    <script src="../js/header.js" defer></script>
+    <script src="../js/footer.js" defer></script>
     <!-- <script src="../js/payroll.js"></script> -->
 </body>
 </html>

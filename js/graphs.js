@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lineCanvas = document.getElementById('linegraph');
   const pieCanvas = document.getElementById('piechart');
 
+//   ===================LINE GRAPH===================
   if (lineCanvas && window.Chart) {
       const lineChart = new Chart(lineCanvas.getContext('2d'), {
           type: 'line',
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+//   ===================PIE CHART===================
   if (pieCanvas && window.Chart) {
       const pieChart = new Chart(pieCanvas.getContext('2d'), {
           type: 'pie',

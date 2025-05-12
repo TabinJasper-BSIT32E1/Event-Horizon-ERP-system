@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <!-- Header -->
     <div id="header-placeholder"></div>
 
 

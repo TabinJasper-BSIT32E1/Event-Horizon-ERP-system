@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- Header -->
     <div id="header-placeholder"></div>
 
     <div id="content-container" class="report-container"> 
@@ -117,10 +118,11 @@
         </div>
     </div>
 
-
+    <!-- Scripts -->
     <script src="../js/header.js" defer></script>
     <script src="../js/footer.js" defer></script>
 
+    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
 </body>

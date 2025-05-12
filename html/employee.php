@@ -46,10 +46,7 @@
 
 </head>
 <body>
-
-    <script src="../js/header.js"></script>
-    <script src="../js/footer.js"></script>
-
+    <!-- Header -->
     <div id="header-placeholder"></div>
     
     <div id="content-container">
@@ -62,7 +59,6 @@
                     </div>
                 </div>
         
-                <!-- Added Fake Data for visual representation -->
                 <table>
                     <thead>
                         <tr>
@@ -76,11 +72,10 @@
                             <th>Date Hired</th>
                         </tr>
                     </thead>
-
+                    
                     <tbody id="employee-table-body">
                     <!-- Employee data will be inserted here via JavaScript -->
                     </tbody>
-
                 </table>
 
 
@@ -91,9 +86,12 @@
     </div>
 
 
+    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
-
+    <!-- Script JS -->
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
     <script src="../js/employee.js"></script>
 </body>
 </html>

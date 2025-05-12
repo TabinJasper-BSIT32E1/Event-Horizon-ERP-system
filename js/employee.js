@@ -1,60 +1,67 @@
-let currentPage = 0; 
+let currentPage = 0;
 
 document.addEventListener('DOMContentLoaded', function () {
-    const searchInput = document.querySelector('.search-container input');
-    const tableBody = document.getElementById('employee-table-body');
+    const container = document.getElementById("attendanceContainer");
+    const resultsPerPage = 5;
 
-    function fetchEmployees(query = '', page = 0) {
-        const limit = 5; // Number of records per page
-        const offset = page * limit;
-    
-        fetch(`../html/employee.php?api=1&query=${query}&limit=${limit}&offset=${offset}`)
-            .then(response => response.json())
-            .then(data => {
-                tableBody.innerHTML = '';
-                data.forEach(emp => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>EMP${emp.EmployeeID}</td>
-                        <td>${emp.FirstName} ${emp.LastName}</td>
-                        <td>${emp.EmailAdd}</td>
-                        <td>${emp.JobPosition}</td>
-                        <td>${emp.Department}</td>
-                        <td>${emp.Status}</td>
-                        <td>Full-Time</td>
-                        <td>${emp.HireDate}</td>
-                    `;
-                    tableBody.appendChild(row);
-                });
-            });
+    function renderTablePage(page = 0) {
+        container.innerHTML = "";
+
+        const start = page * resultsPerPage;
+        const end = start + resultsPerPage;
+        const paginatedItems = attendanceData.slice(start, end);
+
+        paginatedItems.forEach(item => {
+            const row = document.createElement("div");
+            row.className = "attendance-row";
+
+            row.innerHTML = `
+                <div class="employee-info">
+                    <div>EMP-${item.EmployeeID}</div>
+                </div>
+                <div class="employee-stats">
+                    <div>${item.AttendanceDate ?? 'N/A'}</div>
+                    <div>${item.TimeIn ?? 'N/A'}</div>
+                    <div>${item.TimeOut ?? 'N/A'}</div>
+                    <div>${item.AttendanceStatus ?? 'N/A'}</div>
+                </div>
+            `;
+
+            container.appendChild(row);
+        });
+
+        updatePaginationButtons();
     }
-    
 
-    // previous and next button // pagination
+    function updatePaginationButtons() {
+        const totalPages = Math.ceil(attendanceData.length / resultsPerPage);
+        document.getElementById('prev-page').disabled = currentPage === 0;
+        document.getElementById('next-page').disabled = currentPage >= totalPages - 1;
+    }
+
+    // Create pagination buttons
     const paginationContainer = document.createElement('div');
     paginationContainer.className = 'pagination-controls';
     paginationContainer.innerHTML = `
         <button id="prev-page">Previous</button>
         <button id="next-page">Next</button>
     `;
-    document.querySelector('.employee-container').appendChild(paginationContainer);
+    document.querySelector('.attendance-container').appendChild(paginationContainer);
 
     document.getElementById('prev-page').addEventListener('click', () => {
         if (currentPage > 0) {
             currentPage--;
-            fetchEmployees(searchInput.value, currentPage);
+            renderTablePage(currentPage);
         }
     });
 
     document.getElementById('next-page').addEventListener('click', () => {
-        currentPage++;
-        fetchEmployees(searchInput.value, currentPage);
+        const totalPages = Math.ceil(attendanceData.length / resultsPerPage);
+        if (currentPage < totalPages - 1) {
+            currentPage++;
+            renderTablePage(currentPage);
+        }
     });
 
-    searchInput.addEventListener('input', function () {
-        currentPage = 0; 
-        fetchEmployees(searchInput.value, currentPage);
-    });
-
-    fetchEmployees(); 
+    renderTablePage(currentPage);
 });

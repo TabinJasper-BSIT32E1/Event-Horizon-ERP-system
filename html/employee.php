@@ -42,11 +42,14 @@
 
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/employee.css?ver=<?php echo time(); ?>" />    
+    <link rel="stylesheet" href="../css/employee.css">
 
 </head>
 <body>
-    <!-- Header -->
+
+    <script src="../js/header.js"></script>
+    <script src="../js/footer.js"></script>
+
     <div id="header-placeholder"></div>
     
     <div id="content-container">
@@ -72,26 +75,21 @@
                             <th>Date Hired</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody id="employee-table-body">
                     <!-- Employee data will be inserted here via JavaScript -->
                     </tbody>
+
                 </table>
-
-
 
                 <div class="divider"></div>
             </div>
         </div>
     </div>
 
+    <script src="../js/employee.js"></script>
 
-    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
-    <!-- Script JS -->
-    <script src="../js/header.js"></script>
-    <script src="../js/footer.js"></script>
-    <script src="../js/employee.js"></script>
 </body>
 </html>

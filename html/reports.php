@@ -21,7 +21,6 @@
     </head>
 
 <body>
-    <!-- Header -->
     <div id="header-placeholder"></div>
 
 
@@ -34,7 +33,6 @@
                     <canvas id="linegraph"></canvas>
                 </div>
 
-                <!-- Summary Reports Section -->
                 <h2>Summary Reports</h2>
                 <div class="summary-reports">
                     <div class="summary-grid">
@@ -68,11 +66,9 @@
         </div>
     </div>
 
-    <!-- Chart.js Script -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/graphs.js"></script>
-
-    <!-- Script for header & footer -->
     <script src="../js/header.js"></script>
     <script src="../js/footer.js"></script>
 

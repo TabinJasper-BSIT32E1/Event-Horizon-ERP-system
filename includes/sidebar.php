@@ -1,5 +1,4 @@
 <?php
-// No PHP logic yet, but structure is now PHP ready
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +6,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <!-- CSS STYLESHEET -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/sidebar.css?ver=<?php echo time(); ?>" />
 </head>
@@ -17,7 +16,6 @@
             <i class="fas fa-chevron-left"></i>
         </button>
         <ul class="menu-list">    
-            <!-- Logo -->
             <li class="logo-container">
                 <div class="logo-text">
                     <span class="main-text">EVENT <strong>HORIZON</strong></span>
@@ -26,7 +24,6 @@
                 <div class="divider"><hr /></div>
             </li>
             
-            <!-- Menu Items -->
             <li class="menu-item"><a href="#" data-target="../html/dashboard.php"><i class="fas fa-home"></i><span class="nav-text">Dashboard</span></a></li>
             <li class="menu-item"><a href="#" data-target="../html/attendance.php"><i class="fas fa-calendar-check"></i><span class="nav-text">Attendance</span></a></li>
             <li class="menu-item"><a href="#" data-target="../html/employee.php"><i class="fas fa-users"></i><span class="nav-text">Employee</span></a></li>
@@ -40,11 +37,9 @@
                 <ul class="submenu">
                     <li><a href="#" data-target="../html/reports.php"><i class="fas fa-file-alt"></i> Reports</a></li>
                     <li><a href="#" data-target="../html/summaryreport.php"><i class="fas fa-chart-pie"></i> Monthly Report</a></li>
-                    <!-- <li><a href="#" data-target="../html/deduction.php"><i class="fas fa-chart-pie"></i> Deduction</a></li> -->
                 </ul>
             </li>
 
-            <!-- Logout -->
             <li class="logout-container">
                 <div class="divider"><hr /></div>
                 <a href="#" class="logout">
@@ -54,11 +49,11 @@
         </ul>
     </nav>
 
-    <!-- Content Container -->
+    <!-- Container to display the contents per page -->
     <div id="content-container">
     </div>
 
-    <!-- Include External JavaScript -->
+    <!-- Script -->
     <script src="../js/sidebar.js?ver=<?php echo time(); ?>"></script>
 </body>
 </html>
